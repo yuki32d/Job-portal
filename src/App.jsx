@@ -336,7 +336,6 @@ export default function App() {
   );
 
   return (
-    /* --- FULL IMMERSIVE EDGE-TO-EDGE PHONE SCREEN RE-ENGINEERING --- */
     <div className="min-h-screen w-full bg-white text-slate-900 flex justify-center items-start font-sans antialiased selection:bg-indigo-500/30">
       
       <style dangerouslySetInnerHTML={{__html: `
@@ -344,10 +343,8 @@ export default function App() {
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
 
-      {/* Main Chassis Card constraints completely eliminated. Container scales out fluidly */}
       <div className="w-full min-h-screen bg-white flex flex-col relative max-w-xl mx-auto sm:border-x sm:border-slate-100">
         
-        {/* Onboarding Layout Track */}
         {currentFlow === 'onboarding' && (
           <div className="flex-1 flex flex-col justify-between p-6 overflow-y-auto no-scrollbar pt-12">
             <div className="flex justify-between items-center">
@@ -414,17 +411,11 @@ export default function App() {
           </div>
         )}
 
-        {/* Core Screen Logged In */}
         {currentFlow === 'app' && (
           <div className="flex-1 flex flex-col overflow-hidden">
-            
-            {/* Scrollable Container block tracks */}
             <div className="flex-1 overflow-y-auto pb-24 space-y-4 no-scrollbar">
               
-              {isLoading ? (
-                <CatalogSkeleton />
-              ) : activeJobRoute ? (
-                
+              {activeJobRoute ? (
                 <div className="p-5 space-y-5 animate-fadeIn pt-6">
                   {isAppliedSuccess && (
                     <div className="fixed inset-0 bg-white/95 backdrop-blur-md z-[100] flex flex-col justify-center items-center text-center p-6 animate-fadeIn">
@@ -473,7 +464,6 @@ export default function App() {
                 </div>
 
               ) : activeChatSession ? (
-                /* Native Chat Dialogue Frame */
                 <div className="p-4 flex flex-col h-[calc(100vh-70px)] justify-between animate-fadeIn pt-6">
                   <div className="space-y-3">
                     <button onClick={() => setActiveChatSession(null)} className="text-xs font-bold flex items-center text-slate-600 bg-slate-100 px-3 py-2 rounded-xl self-start"><ChevronLeft className="w-4 h-4" /><span>Back</span></button>
@@ -507,7 +497,6 @@ export default function App() {
 
               ) : (
                 <>
-                  {/* --- TAB MODULE LAYER 1: SEARCH FEED CATALOGS --- */}
                   {activeTab === 'catalog' && (
                     <div className="animate-fadeIn">
                       <div className="w-full h-36 relative overflow-hidden flex select-none">
@@ -516,7 +505,7 @@ export default function App() {
                             <div className="space-y-1 relative z-10 max-w-[280px] animate-fadeIn pt-4">
                               <span className="text-[8px] bg-white/20 text-white font-extrabold uppercase px-2 py-0.5 rounded-md">{userRole === 'Candidate' ? slide.tag : "RECRUITER SUITE"}</span>
                               <h3 className="text-sm font-black tracking-tight">{userRole === 'Candidate' ? slide.title : "Corporate Acquisition Pipeline"}</h3>
-                              <p className="text-[10px] text-slate-100 font-medium leading-tight opacity-90">{userRole === 'Candidate' ? slide.desc : "Monitor application metrics live over the stack matrix."}</p>
+                              <p className="text-[10px] text-slate-100 font-medium leading-tight opacity-90">{userRole === 'Candidate' ? slide.desc : "Track matching records across active broadcast grids."}</p>
                             </div>
                           </div>
                         ))}
@@ -549,7 +538,7 @@ export default function App() {
                               </div>
                               <div className="space-y-1.5">
                                 <label className="text-[10px] uppercase font-black text-slate-400">Maximum Salary Cap</label>
-                                <div className="flex justify-between text-indigo-600 font-black://"><span>Limit Constraint</span><span>{salaryCap} $</span></div>
+                                <div className="flex justify-between text-indigo-600 font-black"><span>Limit Constraint</span><span>{salaryCap} $</span></div>
                                 <input type="range" min="1000" max="3500" step="500" value={salaryCap} onChange={(e) => setSalaryCap(Number(e.target.value))} className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600" />
                               </div>
                             </div>
@@ -578,10 +567,9 @@ export default function App() {
                           ))}
                         </div>
                       </div>
-                    </>
+                    </div>
                   )}
 
-                  {/* --- TAB MODULE LAYER 2: BOOKMARKS BOOK LOGS --- */}
                   {activeTab === 'favourites' && (
                     <div className="p-4 space-y-4 no-scrollbar pt-6 animate-fadeIn">
                       <div>
@@ -619,7 +607,6 @@ export default function App() {
                     </div>
                   )}
 
-                  {/* --- TAB MODULE LAYER 3: INVITATION LOG MATRICES --- */}
                   {activeTab === 'responses' && (
                     <div className="p-4 space-y-4 no-scrollbar pt-6 animate-fadeIn">
                       <div>
@@ -651,7 +638,6 @@ export default function App() {
                     </div>
                   )}
 
-                  {/* --- TAB MODULE LAYER 4: SYSTEM METRICS DASHBOARD --- */}
                   {activeTab === 'profile' && (
                     <div className="p-4 space-y-5 animate-fadeIn no-scrollbar pt-6">
                       {profileView === 'resumes' ? (
@@ -695,7 +681,7 @@ export default function App() {
                         <div className="space-y-4">
                           <button onClick={() => setProfileView('menu')} className="text-xs font-bold flex items-center text-indigo-600 bg-indigo-50 px-3 py-2 rounded-xl"><ChevronLeft className="w-4 h-4" /><span>Back</span></button>
                           <h2 className="text-xl font-black">Support Desk</h2>
-                          <form onSubmit={handleCreateTicket} className="bg-slate-50 border p-4 rounded-2xl space-y-3 text-xs font-semibold">
+                          <form onSubmit={(e) => e.preventDefault()} className="bg-slate-50 border p-4 rounded-2xl space-y-3 text-xs font-semibold">
                             <textarea rows="3" placeholder="Describe issue parameters..." value={ticketDesc} onChange={(e) => setTicketDesc(e.target.value)} className="w-full bg-white border p-2.5 rounded-xl outline-none" />
                             <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-2.5 rounded-xl"><Send className="w-3.5 h-3.5 inline mr-1" />Submit Ticket</button>
                           </form>
@@ -762,7 +748,7 @@ export default function App() {
               )}
             </div>
 
-            {/* --- IMMERSIVE PERSISTENT FIXED MOBILE FOOTER NAV BOTTOM BAR --- */}
+            {/* Fixed Mobile Nav Bar footer anchors directly underneath */}
             <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-100 pb-safe px-4 py-3 flex justify-between items-center z-50 select-none max-w-xl mx-auto">
               <button onClick={() => triggerTabShift('catalog')} className={`flex flex-col items-center flex-1 space-y-0.5 ${activeTab === 'catalog' && !activeJobRoute ? 'text-indigo-600 font-bold' : 'text-slate-400'}`}><Search className="w-5 h-5 stroke-[2.2]" /><span className="text-[10px] tracking-tight">{userRole === 'Candidate' ? 'Catalog' : 'Hiring Desk'}</span></button>
               <button onClick={() => triggerTabShift('favourites')} className={`flex flex-col items-center flex-1 space-y-0.5 ${activeTab === 'favourites' ? 'text-indigo-600 font-bold' : 'text-slate-400'}`}><Heart className="w-5 h-5 stroke-[2.2]" /><span className="text-[10px] tracking-tight">{userRole === 'Candidate' ? 'Bookmarks' : 'Sourcing'}</span></button>
