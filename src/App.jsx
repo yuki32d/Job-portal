@@ -4,7 +4,7 @@ import {
   ChevronRight, ArrowRight, X, Filter, 
   MapPin, DollarSign, CheckCircle2, ChevronLeft, 
   Sparkles, Share2, RotateCcw, Plus, Trash2, Send, MessageCircle, 
-  GraduationCap, Award, Star, Building2, Sliders, Users, Calendar, BarChart3, Radio, FileText
+  GraduationCap, Award, Star, Building2, BarChart3, Calendar, Radio, FileText, Zap
 } from 'lucide-react';
 
 // --- COMPREHENSIVE 25-VACANCY ENTERPRISE PRODUCTION-GRADE DATA MATRIX ---
@@ -312,7 +312,7 @@ export default function App() {
                   <div className="relative w-24 h-24 mx-auto bg-indigo-50 border rounded-3xl flex items-center justify-center"><Briefcase className="w-10 h-10 text-indigo-600" /></div>
                   <div className="space-y-2">
                     <h1 className="text-3xl font-black tracking-tight">CareerHub</h1>
-                    <p className="text-slate-500 text-sm max-w-xs mx-auto">Discover vetted, real-time vacancies matched to your precise skillset via smart AI workflows.</p>
+                    <p className="text-slate-500 text-sm max-w-xs mx-auto">Discover verified, real-time vacancies matched to your precise skillset via smart AI workflows.</p>
                   </div>
                 </div>
               )}
@@ -539,7 +539,7 @@ export default function App() {
                                 {userRole === 'Candidate' ? (
                                   <button onClick={(e) => toggleFavorite(job.id, e)} className={`p-2 rounded-xl transition-all ${favorites.includes(job.id) ? 'text-rose-500 bg-rose-50' : 'text-slate-400 bg-slate-50'}`}><Heart className={`w-3.5 h-3.5 ${favorites.includes(job.id) ? 'fill-current' : ''}`} /></button>
                                 ) : (
-                                  <div className="bg-indigo-50 text-indigo-600 text-[10px] font-black px-2.5 py-1 rounded-md">{job.applicantsCount || 0} Applicants</div>
+                                  <div className="bg-indigo-50 text-indigo-600 text-[10px] font-black px-2.5 py-1 rounded-md">{job.applicantsCount || 0} Candidates</div>
                                 )}
                               </div>
                               <div className="flex justify-between items-center text-[11px] font-bold text-slate-500">
