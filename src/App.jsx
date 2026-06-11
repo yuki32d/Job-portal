@@ -4,7 +4,7 @@ import {
   ChevronRight, ArrowRight, X, Filter, 
   MapPin, DollarSign, CheckCircle2, ChevronLeft, 
   Sparkles, Share2, RotateCcw, Plus, Trash2, Send, MessageCircle, 
-  GraduationCap, Award, Star, Building2, BarChart3, Calendar, Radio, FileText, Zap
+  GraduationCap, Award, Star, Building2, BarChart3, Calendar, Radio, FileText, Zap, Users
 } from 'lucide-react';
 
 // --- COMPREHENSIVE 25-VACANCY ENTERPRISE PRODUCTION-GRADE DATA MATRIX ---
@@ -312,7 +312,7 @@ export default function App() {
                   <div className="relative w-24 h-24 mx-auto bg-indigo-50 border rounded-3xl flex items-center justify-center"><Briefcase className="w-10 h-10 text-indigo-600" /></div>
                   <div className="space-y-2">
                     <h1 className="text-3xl font-black tracking-tight">CareerHub</h1>
-                    <p className="text-slate-500 text-sm max-w-xs mx-auto">Discover verified, real-time vacancies matched to your precise skillset via smart AI workflows.</p>
+                    <p className="text-slate-500 text-sm max-w-xs mx-auto">Discover vetted, real-time vacancies matched to your precise skillset via smart AI workflows.</p>
                   </div>
                 </div>
               )}
@@ -489,7 +489,7 @@ export default function App() {
                           <div className="grid grid-cols-2 gap-3 pt-1">
                             <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
                               <div className="flex justify-between items-center text-slate-400"><span className="text-[10px] font-black uppercase">Active Channels</span><Radio className="w-3.5 h-3.5 text-indigo-400" /></div>
-                              <p className="text-xl font-black mt-1">{masterJobList.length} Vacancies</p>
+                              <p className="textxl font-black mt-1">{masterJobList.length} Vacancies</p>
                             </div>
                             <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
                               <div className="flex justify-between items-center text-slate-400"><span className="text-[10px] font-black uppercase">Pipeline Flow</span><Users className="w-3.5 h-3.5 text-emerald-400" /></div>
@@ -539,7 +539,7 @@ export default function App() {
                                 {userRole === 'Candidate' ? (
                                   <button onClick={(e) => toggleFavorite(job.id, e)} className={`p-2 rounded-xl transition-all ${favorites.includes(job.id) ? 'text-rose-500 bg-rose-50' : 'text-slate-400 bg-slate-50'}`}><Heart className={`w-3.5 h-3.5 ${favorites.includes(job.id) ? 'fill-current' : ''}`} /></button>
                                 ) : (
-                                  <div className="bg-indigo-50 text-indigo-600 text-[10px] font-black px-2.5 py-1 rounded-md">{job.applicantsCount || 0} Candidates</div>
+                                  <div className="bg-indigo-50 text-indigo-600 text-[10px] font-black px-2.5 py-1 rounded-md">{job.applicantsCount || 0} Applicants</div>
                                 )}
                               </div>
                               <div className="flex justify-between items-center text-[11px] font-bold text-slate-500">
